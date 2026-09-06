@@ -3,9 +3,13 @@
     "ascent_hero": {
       "type": "ascent-hero",
       "settings": {
+        "background_image": "shopify://shop_images/hero-bg-image-ds-2-full-bleed-113.png",
+        "avatar_1": "shopify://shop_images/ellipse-13-ds-1-split-2001216.png",
+        "avatar_2": "shopify://shop_images/ellipse-14-ds-1-split-2001217.png",
+        "avatar_3": "shopify://shop_images/ellipse-15-ds-1-split-2001218.png",
         "eyebrow_text": "Trusted by World class athletes",
         "headline": "MADE FOR HARD WORK.",
-        "body_text": "Protein that doesn't compromise. Native whey, no artificial flavors, third-party tested.",
+        "body_text": "We're the only major brand that makes its own protein — native whey from farm-fresh milk, with nothing artificial. Ever.",
         "cta_primary_text": "SHOP NATIVE WHEY",
         "cta_secondary_text": "SEE THE SCIENCE →",
         "padding-block-start": 0,
@@ -62,44 +66,48 @@
         "card1": {
           "type": "product-card",
           "settings": {
+            "card_image": "shopify://shop_images/rectangle-ds-2-1186.png",
             "badge_visible": true,
-            "badge_text": "BESTSELLER",
+            "badge_text": "#1 BEST SELLER",
             "product_title": "Native Whey Protein",
             "product_price": "$44.99",
-            "product_meta": "30 Servings · 25g Protein",
+            "product_meta": "25g protein · 2.6g leucine",
             "default_variant_label": "Chocolate"
           }
         },
         "card2": {
           "type": "product-card",
           "settings": {
+            "card_image": "shopify://shop_images/rectangle-ds-2-1209.png",
             "badge_visible": false,
             "badge_text": "",
-            "product_title": "Native Whey Isolate",
-            "product_price": "$54.99",
-            "product_meta": "30 Servings · 27g Protein",
-            "default_variant_label": "Vanilla"
+            "product_title": "Clean Creatine",
+            "product_price": "$29.99",
+            "product_meta": "5g Creapure® · one-line label",
+            "default_variant_label": "Unflavored"
           }
         },
         "card3": {
           "type": "product-card",
           "settings": {
-            "badge_visible": false,
-            "badge_text": "",
-            "product_title": "Grass-Fed Whey",
-            "product_price": "$49.99",
-            "product_meta": "30 Servings · 24g Protein",
-            "default_variant_label": "Unflavored"
+            "card_image": "shopify://shop_images/rectangle-ds-2-1227.png",
+            "badge_visible": true,
+            "badge_text": "NEW FLAVOR",
+            "product_title": "Hydration + Energy",
+            "product_price": "$34.99",
+            "product_meta": "3 electrolytes · zero sugar",
+            "default_variant_label": "Chocolate"
           }
         },
         "card4": {
           "type": "product-card",
           "settings": {
+            "card_image": "shopify://shop_images/rectangle-ds-2-1250.png",
             "badge_visible": false,
             "badge_text": "",
-            "product_title": "Casein Protein",
-            "product_price": "$46.99",
-            "product_meta": "28 Servings · 24g Protein",
+            "product_title": "Iced Coffee + Protein",
+            "product_price": "$39.99",
+            "product_meta": "20g protein · 100mg caffeine",
             "default_variant_label": "Chocolate"
           }
         }
@@ -109,6 +117,7 @@
     "ascent_science": {
       "type": "ascent-science",
       "settings": {
+        "background_image": "shopify://shop_images/the-chem-desktop-ds-2-3293.png",
         "section_label": "THE SCIENCE",
         "heading": "There's nothing more fundamental to performance than what you feed it.",
         "subtext": "Every ingredient is backed by research and rigorously tested to fuel your body at its best",
@@ -141,32 +150,36 @@
         "goal1": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/image-desktop-ds-2-1363.png",
             "title": "Build Muscle",
-            "subtitle": "High-leucine protein for serious gains.",
+            "subtitle": "Support muscle growth.",
             "title_weight": "semibold"
           }
         },
         "goal2": {
           "type": "goal",
           "settings": {
-            "title": "Lose Weight",
-            "subtitle": "Clean protein to fuel fat loss.",
+            "image": "shopify://shop_images/image-desktop-ds-2-1372.png",
+            "title": "Recovery",
+            "subtitle": "Support faster recovery.",
             "title_weight": "semibold"
           }
         },
         "goal3": {
           "type": "goal",
           "settings": {
-            "title": "Recover Faster",
-            "subtitle": "Repair and rebuild after every session.",
+            "image": "shopify://shop_images/image-desktop-ds-2-1380.png",
+            "title": "Fuel Your Workout",
+            "subtitle": "Power your training.",
             "title_weight": "semibold"
           }
         },
         "goal4": {
           "type": "goal",
           "settings": {
+            "image": "shopify://shop_images/image-desktop-ds-2-1388.png",
             "title": "Everyday Nutrition",
-            "subtitle": "Clean fuel for clean living.",
+            "subtitle": "Protein for every day.",
             "title_weight": "semibold"
           }
         }
@@ -192,8 +205,8 @@
     "ascent_ugc_wall": {
       "type": "ascent-ugc-wall",
       "settings": {
-        "heading": "Real results. Real people.",
-        "subheading": "See what our community is saying.",
+        "heading": "Trusted by 100,000+ athletes worldwide",
+        "subheading": "See how athletes, trainers, and everyday people fuel their goals with Ascent.",
         "padding-block-start": 80,
         "padding-block-end": 80
       },
@@ -201,61 +214,72 @@
         "ugc1": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "Sarah M.",
-            "author_handle": "@sarahfits",
-            "quote": "I've tried so many protein powders and nothing comes close. The native whey actually tastes clean and I can feel the difference in my recovery.",
+            "author_name": "Sarah Jenkins",
+            "author_handle": "@sarah_lifts",
+            "quote": "“Been using Ascent Whey for 8 months. Cleanest protein I’ve ever had. Zero bloating, perfect recovery.”",
             "card_theme": "dark",
-            "product_name": "Native Whey Protein"
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-desktop-4432101.png",
+            "product_name": "Chocolate Whey Protein 2lb"
           }
         },
         "ugc2": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "James T.",
-            "author_handle": "@jameslifts",
-            "quote": "Finally a protein company that backs everything up with real science. No artificial junk, just clean fuel.",
+            "card_image": "shopify://shop_images/influencer-photo-desktop-4432109.png",
+            "author_name": "Marcus Brody",
+            "author_handle": "@trail_marcus",
+            "quote": "“The hydration packets changed my long runs. Clean taste that doesn’t overwhelm.”",
             "card_theme": "light",
-            "product_name": "Native Whey Isolate"
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-desktop-4432124.png",
+            "product_name": "Hydration Orange Mango"
           }
         },
         "ugc3": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "Emma R.",
-            "author_handle": "@emmarun",
-            "quote": "The subscription is a no-brainer. 15% off and free shipping every month — and I can pause anytime.",
-            "card_theme": "dark",
-            "product_name": "Native Whey Protein"
+            "card_image": "shopify://shop_images/influencer-photo-desktop-4432133.png",
+            "author_name": "Coach Mike",
+            "author_handle": "@coach_mike",
+            "quote": "“I tell all my clients: don’t ruin a good workout with bad ingredients. Ascent is the gold standard for native whey.”",
+            "card_theme": "light",
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-mobile-I44314927863166.png",
+            "product_name": "Unflavored Whey Protein 2lb"
           }
         },
         "ugc4": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "Marcus L.",
-            "author_handle": "@marcusstrong",
-            "quote": "Third party tested. No proprietary blends. No artificial flavors. This is the real deal.",
-            "card_theme": "light",
-            "product_name": "Grass-Fed Whey"
+            "card_image": "shopify://shop_images/influencer-photo-desktop-4432156.png",
+            "author_name": "Jennie Kim",
+            "author_handle": "@jennie_yoga",
+            "quote": "“A scoop of the Vanilla Whey in my morning oats keeps me fueled for hours. Genuinely delicious flavor.”",
+            "card_theme": "dark",
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-desktop-4432171.png",
+            "product_name": "Vanilla Whey Protein 4lb"
           }
         },
         "ugc5": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "Priya K.",
-            "author_handle": "@priyafueled",
-            "quote": "The chocolate flavor is actually incredible. My whole family drinks this now.",
+            "card_image": "shopify://shop_images/uploads-650x812-ascentprotein-winter2023-yardgym-9427-edit-1-1400x-desktop-4432180.jpg",
+            "author_name": "Danielle Rivers",
+            "author_handle": "@danielle_crossfit",
+            "quote": "“Informed Choice tested, third-party clean. As a competitive athlete, I feel like I can train with Ascent.”",
             "card_theme": "dark",
-            "product_name": "Native Whey Protein"
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-desktop-4432195.png",
+            "product_name": "Native Whey Protein 5lb"
           }
         },
         "ugc6": {
           "type": "ugc-card",
           "settings": {
-            "author_name": "Tyler W.",
-            "author_handle": "@tylerwod",
-            "quote": "30 day guarantee made it easy to try. Now I'm a subscriber for life.",
+            "card_image": "shopify://shop_images/uploads-1024x1024-clear-lifestyle-400x-desktop-4432203.jpg",
+            "author_name": "Alex & Tyler",
+            "author_handle": "@ascentathletes",
+            "quote": "“Our post-track ritual. Easy to mix, hits the spot, and we are back on our feet tomorrow.”",
             "card_theme": "light",
-            "product_name": "Native Whey Isolate"
+            "product_thumbnail": "shopify://shop_images/micro-thumbnail-mobile-I44314927863166.png",
+            "product_name": "Native Whey Protein 2lb"
           }
         }
       },
@@ -274,8 +298,8 @@
     "ascent_newsletter": {
       "type": "ascent-newsletter",
       "settings": {
-        "heading": "Stay in the loop.",
-        "subtext": "New products, early drops, training tips — right to your inbox.",
+        "heading": "Want to Recover Faster?",
+        "subtext": "Unlock special offers, giveaways and exclusive recipes.",
         "button_text": "SUBSCRIBE",
         "placeholder_text": "Enter your email",
         "alignment": "center",
