@@ -1,0 +1,81 @@
+/*
+ * Ascent Brand Custom Fonts
+ *
+ * NOTE: Neue Haas Grotesk Display Pro and Proxima Nova are commercial fonts.
+ * After uploading the font files to Shopify Files, update the src URLs below
+ * with the actual CDN URLs from your store's file manager.
+ * Pattern: https://cdn.shopify.com/s/files/1/0190/2411/7860/files/<filename>.woff2
+ *
+ * Until the font files are uploaded, system-ui (for display) and Arial (for body)
+ * will serve as fallbacks.
+ */
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-400.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-400.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-500.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-600.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-600.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-700.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/NeueHaasGroteskDisplayPro-700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Regular.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Semibold.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Bold.woff2') format('woff2'),
+       url('https://cdn.shopify.com/s/files/1/0190/2411/7860/files/ProximaNova-Bold.woff') format('woff');
+}
+
+:root {
+  --font-ascent-display: 'Neue Haas Grotesk Display Pro', system-ui, -apple-system, sans-serif;
+  --font-ascent-body: 'Proxima Nova', Arial, sans-serif;
+  --font-ascent-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-ascent-geist: 'Geist Mono', 'Courier New', monospace;
+}

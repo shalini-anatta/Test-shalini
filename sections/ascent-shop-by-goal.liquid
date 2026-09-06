@@ -1,0 +1,313 @@
+<div
+  class="ascent-goal"
+  style="--goal-pad-top: {{ section.settings['padding-block-start'] }}px; --goal-pad-bottom: {{ section.settings['padding-block-end'] }}px;"
+>
+  <div class="ascent-goal__inner">
+    <div class="ascent-goal__header">
+      <div class="ascent-goal__heading-wrap">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ascent-goal__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.description != blank -%}
+        <div class="ascent-goal__desc-wrap">
+          {%- assign desc_lines = section.settings.description | newline_to_br | split: '<br />' -%}
+          {%- for line in desc_lines -%}
+            {%- assign trimmed = line | strip -%}
+            {%- if trimmed != blank -%}
+              <p class="ascent-goal__desc-line">{{ trimmed }}</p>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="ascent-goal__divider"></div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="ascent-goal__grid">
+        {%- for block in section.blocks -%}
+          <a
+            class="ascent-goal__card"
+            href="{{ block.settings.url | default: '#' }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="ascent-goal__img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img
+                  class="ascent-goal__img"
+                  src="{{ block.settings.image | image_url: width: 616 }}"
+                  srcset="{{ block.settings.image | image_url: width: 308 }} 308w, {{ block.settings.image | image_url: width: 616 }} 616w"
+                  sizes="(min-width: 750px) 308px, calc(50vw - 16px)"
+                  alt="{{ block.settings.title | escape }}"
+                  width="308"
+                  height="360"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <div class="ascent-goal__img-placeholder"></div>
+              {%- endif -%}
+            </div>
+            <div class="ascent-goal__text">
+              {%- if block.settings.title != blank -%}
+                <h3 class="ascent-goal__card-title ascent-goal__card-title--{{ block.settings.title_weight }}">
+                  {{ block.settings.title }}
+                </h3>
+              {%- endif -%}
+              {%- if block.settings.subtitle != blank -%}
+                <p class="ascent-goal__card-subtitle">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.ascent-goal {
+  background: #ffffff;
+  padding-block-start: var(--goal-pad-top, 80px);
+  padding-block-end: var(--goal-pad-bottom, 80px);
+  padding-inline: 20px;
+}
+
+.ascent-goal__inner {
+  max-width: 1328px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ascent-goal__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ascent-goal__heading {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ascent-goal__desc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ascent-goal__desc-line {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin: 0;
+  text-align: start;
+}
+
+.ascent-goal__divider {
+  height: 1px;
+  background: #d0d0d0;
+}
+
+.ascent-goal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ascent-goal__card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ascent-goal__img-wrap {
+  overflow: hidden;
+  aspect-ratio: 308 / 360;
+}
+
+.ascent-goal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ascent-goal__card:hover .ascent-goal__img {
+  transform: scale(1.03);
+}
+
+.ascent-goal__img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+}
+
+.ascent-goal__text {
+  padding-block-start: 20px;
+}
+
+.ascent-goal__card-title {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ascent-goal__card-title--medium { font-weight: 500; }
+.ascent-goal__card-title--semibold { font-weight: 600; }
+
+.ascent-goal__card-subtitle {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin: 8px 0 0;
+}
+
+@media screen and (min-width: 750px) {
+  .ascent-goal {
+    padding-inline: 56px;
+  }
+
+  .ascent-goal__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ascent-goal__heading {
+    font-size: 42px;
+    line-height: 80px;
+  }
+
+  .ascent-goal__desc-wrap {
+    text-align: end;
+  }
+
+  .ascent-goal__desc-line {
+    text-align: end;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .ascent-goal__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .ascent-goal__card-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .ascent-goal__card-subtitle {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shop by Goal",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Goal"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From building strength to everyday nutrition\nWe make products that support the life you want to live."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Goal title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Goal description."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "title_weight",
+          "label": "Title weight",
+          "default": "semibold",
+          "options": [
+            { "value": "medium", "label": "Medium" },
+            { "value": "semibold", "label": "Semibold" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Goal"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,479 @@
+<div
+  class="ascent-bs"
+  style="--bs-pad-top: {{ section.settings['padding-block-start'] }}px; --bs-pad-bottom: {{ section.settings['padding-block-end'] }}px;"
+>
+  <div class="ascent-bs__inner">
+    <div class="ascent-bs__left">
+      <div class="ascent-bs__left-top">
+        {%- if section.settings.section_title != blank -%}
+          <h2 class="ascent-bs__title">{{ section.settings.section_title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.section_description != blank -%}
+          <p class="ascent-bs__description">{{ section.settings.section_description }}</p>
+        {%- endif -%}
+      </div>
+      <div class="ascent-bs__categories">
+        <p class="ascent-bs__cat">Latest</p>
+        <p class="ascent-bs__cat">Protein</p>
+        <p class="ascent-bs__cat">Build &amp; Recover</p>
+        <p class="ascent-bs__cat">Everyday</p>
+      </div>
+      {%- if section.settings.cta_text != blank -%}
+        <a
+          class="ascent-bs__cta"
+          href="{{ section.settings.cta_url | default: '/collections/all' }}"
+        >{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="ascent-bs__cards-scroll">
+      <div class="ascent-bs__cards">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign bs_product = block.settings.product
+            if bs_product != blank
+              assign bs_title = bs_product.title
+              assign bs_price = bs_product.price | money
+              assign bs_url = bs_product.url
+            else
+              assign bs_title = block.settings.product_title | default: 'Product Name'
+              assign bs_price = block.settings.product_price | default: ''
+              assign bs_url = '#'
+            endif
+          -%}
+          <div class="ascent-bs__card" {{ block.shopify_attributes }}>
+            <a class="ascent-bs__card-image-wrap" href="{{ bs_url }}">
+              {%- if block.settings.card_image != blank -%}
+                <img
+                  class="ascent-bs__card-img"
+                  src="{{ block.settings.card_image | image_url: width: 360 }}"
+                  alt="{{ bs_title | escape }}"
+                  width="180"
+                  height="180"
+                  loading="lazy"
+                >
+              {%- endif -%}
+              {%- if block.settings.badge_visible and block.settings.badge_text != blank -%}
+                <span class="ascent-bs__badge">{{ block.settings.badge_text }}</span>
+              {%- endif -%}
+            </a>
+            <div class="ascent-bs__card-content">
+              <h3 class="ascent-bs__card-title">
+                <a href="{{ bs_url }}">{{ bs_title }}</a>
+              </h3>
+              {%- if block.settings.product_meta != blank -%}
+                <p class="ascent-bs__card-meta">{{ block.settings.product_meta }}</p>
+              {%- endif -%}
+              {%- if bs_price != blank -%}
+                <p class="ascent-bs__card-price">{{ bs_price }}</p>
+              {%- endif -%}
+              {%- if block.settings.default_variant_label != blank -%}
+                <div class="ascent-bs__flavor-selector">
+                  <span class="ascent-bs__flavor-label">{{ block.settings.default_variant_label }}</span>
+                  <span class="ascent-bs__chevron">
+                    <img src="{{ 'chevron-down.svg' | asset_url }}" alt="" width="16" height="16" loading="lazy">
+                  </span>
+                </div>
+              {%- endif -%}
+              <a class="ascent-bs__atc" href="{{ bs_url }}">ADD TO CART</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.ascent-bs {
+  background: #ffffff;
+  padding-block-start: var(--bs-pad-top, 80px);
+  padding-block-end: var(--bs-pad-bottom, 80px);
+  padding-inline: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ascent-bs__inner {
+  max-width: 1328px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ascent-bs__left {
+  display: none;
+}
+
+.ascent-bs__left-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-block-end: 24px;
+}
+
+.ascent-bs__title {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 34px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ascent-bs__description {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ascent-bs__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-block-end: 24px;
+}
+
+.ascent-bs__cat {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 34px;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ascent-bs__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 30px;
+  border: 1.5px solid #1a1a1a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.96px;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.ascent-bs__cards-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.ascent-bs__cards-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ascent-bs__cards {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  min-width: max-content;
+}
+
+.ascent-bs__card {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.ascent-bs__card-image-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 148, 148, 0.15);
+  text-decoration: none;
+}
+
+.ascent-bs__card-img {
+  width: auto;
+  height: auto;
+  max-width: 180px;
+  max-height: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.ascent-bs__badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #1a1a1a;
+  color: #fbec00;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.54px;
+  padding: 5px 8px;
+}
+
+.ascent-bs__card-content {
+  padding: 12px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid rgba(148, 148, 148, 0.15);
+  border-block-start: none;
+}
+
+.ascent-bs__card-title {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.ascent-bs__card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ascent-bs__card-meta {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #414141;
+  margin: 0 0 12px;
+}
+
+.ascent-bs__card-price {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+}
+
+.ascent-bs__flavor-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border: 1px solid #1a1a1a;
+  margin-block-end: 10px;
+  background: #ffffff;
+}
+
+.ascent-bs__flavor-label {
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #1a1a1a;
+}
+
+.ascent-bs__chevron img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.ascent-bs__atc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 0;
+  background: #fbec00;
+  color: #1a1a1a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.96px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-block-start: auto;
+}
+
+.ascent-bs__atc:hover {
+  background: #f0e000;
+}
+
+@media screen and (min-width: 750px) {
+  .ascent-bs {
+    padding-inline: 56px;
+  }
+
+  .ascent-bs__inner {
+    flex-direction: row;
+    gap: 64px;
+    align-items: flex-start;
+  }
+
+  .ascent-bs__left {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    flex-shrink: 0;
+    justify-content: space-between;
+    min-height: 459px;
+  }
+
+  .ascent-bs__cards-scroll {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ascent-bs__card {
+    width: 325px;
+  }
+
+  .ascent-bs__card-image-wrap {
+    height: 230px;
+  }
+
+  .ascent-bs__card-img {
+    max-width: 233px;
+    max-height: 233px;
+  }
+
+  .ascent-bs__card-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .ascent-bs__card-meta {
+    font-size: 16px;
+  }
+
+  .ascent-bs__card-price {
+    font-size: 20px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Bestsellers",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Bestsellers"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section description",
+      "default": "Discover our top-selling favorites loved by thousands of customers"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "SHOP BESTSELLERS →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product-card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card image"
+        },
+        {
+          "type": "checkbox",
+          "id": "badge_visible",
+          "label": "Show badge",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text"
+        },
+        {
+          "type": "text",
+          "id": "product_meta",
+          "label": "Product meta"
+        },
+        {
+          "type": "text",
+          "id": "default_variant_label",
+          "label": "Default variant label"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product title (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "product_price",
+          "label": "Product price (fallback)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestsellers"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,340 @@
+<div class="ascent-sub">
+  <div class="ascent-sub__col ascent-sub__col--1">
+    {%- if section.settings.col1_label != blank -%}
+      <p class="ascent-sub__label">{{ section.settings.col1_label }}</p>
+    {%- endif -%}
+    {%- if section.settings.col1_heading != blank -%}
+      <h2 class="ascent-sub__heading">{{ section.settings.col1_heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.col1_subtext != blank -%}
+      <p class="ascent-sub__subtext">{{ section.settings.col1_subtext }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="ascent-sub__col ascent-sub__col--2">
+    {%- assign items = '' | split: '' -%}
+    {%- if section.settings.col2_item_1 != blank -%}
+      <div class="ascent-sub__item">
+        <span class="ascent-sub__bullet"></span>
+        <span class="ascent-sub__item-text">{{ section.settings.col2_item_1 }}</span>
+      </div>
+    {%- endif -%}
+    {%- if section.settings.col2_item_2 != blank -%}
+      <div class="ascent-sub__item">
+        <span class="ascent-sub__bullet"></span>
+        <span class="ascent-sub__item-text">{{ section.settings.col2_item_2 }}</span>
+      </div>
+    {%- endif -%}
+    {%- if section.settings.col2_item_3 != blank -%}
+      <div class="ascent-sub__item">
+        <span class="ascent-sub__bullet"></span>
+        <span class="ascent-sub__item-text">{{ section.settings.col2_item_3 }}</span>
+      </div>
+    {%- endif -%}
+    {%- if section.settings.col2_item_4 != blank -%}
+      <div class="ascent-sub__item">
+        <span class="ascent-sub__bullet"></span>
+        <span class="ascent-sub__item-text">{{ section.settings.col2_item_4 }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="ascent-sub__col ascent-sub__col--3">
+    {%- if section.settings.col3_label != blank -%}
+      <p class="ascent-sub__col3-label">{{ section.settings.col3_label }}</p>
+    {%- endif -%}
+    <div class="ascent-sub__price-row">
+      {%- if section.settings.col3_price != blank -%}
+        <span class="ascent-sub__price">{{ section.settings.col3_price }}</span>
+      {%- endif -%}
+      {%- if section.settings.col3_original_price != blank -%}
+        <span class="ascent-sub__original-price">{{ section.settings.col3_original_price }}</span>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.col3_cta_text != blank -%}
+      <a
+        class="ascent-sub__cta"
+        href="{{ section.settings.col3_cta_url | default: '#' }}"
+      >{{ section.settings.col3_cta_text }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.ascent-sub {
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 16px;
+}
+
+.ascent-sub__col {
+  padding: 44px 40px;
+}
+
+.ascent-sub__col--1 {
+  border-bottom: 1px solid #292929;
+  display: flex;
+  flex-direction: column;
+}
+
+.ascent-sub__col--2 {
+  border-bottom: 1px solid #292929;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.ascent-sub__col--3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ascent-sub__label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 1.6px;
+  color: #fbec00;
+  margin: 0 0 16px;
+}
+
+.ascent-sub__heading {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 32px;
+  color: #f8f8f8;
+  margin: 0 0 14px;
+}
+
+.ascent-sub__subtext {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #a9a9a9;
+  margin: 0;
+}
+
+.ascent-sub__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.ascent-sub__bullet {
+  width: 8px;
+  height: 8px;
+  background: #fbec00;
+  flex-shrink: 0;
+  display: block;
+}
+
+.ascent-sub__item-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 1.21px;
+  color: #f8f8f8;
+}
+
+.ascent-sub__col3-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 1.3px;
+  color: #919191;
+  margin: 0 0 10px;
+}
+
+.ascent-sub__price-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 12px;
+  margin-block-end: 18px;
+}
+
+.ascent-sub__price {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+  color: #fbec00;
+}
+
+.ascent-sub__original-price {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #919191;
+  text-decoration: line-through;
+}
+
+.ascent-sub__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 0;
+  background: #fbec00;
+  color: #1a1a1a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 1.43px;
+  text-decoration: none;
+}
+
+.ascent-sub__cta:hover {
+  background: #f0e000;
+}
+
+@media screen and (min-width: 750px) {
+  .ascent-sub {
+    flex-direction: row;
+    padding-inline: 16px;
+    height: 228px;
+  }
+
+  .ascent-sub__col {
+    flex: 1;
+    padding: 44px 40px;
+  }
+
+  .ascent-sub__col--1 {
+    border-bottom: none;
+    border-inline-end: 1px solid #292929;
+  }
+
+  .ascent-sub__col--2 {
+    border-bottom: none;
+    border-inline-end: 1px solid #292929;
+  }
+
+  .ascent-sub__col--3 {
+    border-bottom: none;
+  }
+
+  .ascent-sub__heading {
+    font-size: 34px;
+    line-height: 37px;
+  }
+
+  .ascent-sub__item-text {
+    font-size: 16px;
+  }
+
+  .ascent-sub__price {
+    font-size: 40px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Subscribe Row",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "text",
+      "id": "col1_label",
+      "label": "Label",
+      "default": "BECOME A MEMBER"
+    },
+    {
+      "type": "text",
+      "id": "col1_heading",
+      "label": "Heading",
+      "default": "Never run out mid-week."
+    },
+    {
+      "type": "textarea",
+      "id": "col1_subtext",
+      "label": "Subtext",
+      "default": "Set a cadence, change it whenever. The discount isn't a trick to lock you in — there's no lock."
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "text",
+      "id": "col2_item_1",
+      "label": "Bullet 1",
+      "default": "15% OFF EVERY ORDER"
+    },
+    {
+      "type": "text",
+      "id": "col2_item_2",
+      "label": "Bullet 2",
+      "default": "FREE SHIPPING, ALWAYS"
+    },
+    {
+      "type": "text",
+      "id": "col2_item_3",
+      "label": "Bullet 3",
+      "default": "SKIP, SWAP OR CANCEL IN TWO TAPS"
+    },
+    {
+      "type": "text",
+      "id": "col2_item_4",
+      "label": "Bullet 4",
+      "default": "EARLY ACCESS TO NEW FLAVORS"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "text",
+      "id": "col3_label",
+      "label": "Label",
+      "default": "NATIVE WHEY, SUBSCRIBED"
+    },
+    {
+      "type": "text",
+      "id": "col3_price",
+      "label": "Subscribed price",
+      "default": "$38.24"
+    },
+    {
+      "type": "text",
+      "id": "col3_original_price",
+      "label": "Original price",
+      "default": "$44.99"
+    },
+    {
+      "type": "text",
+      "id": "col3_cta_text",
+      "label": "CTA text",
+      "default": "BECOME A MEMBER"
+    },
+    {
+      "type": "url",
+      "id": "col3_cta_url",
+      "label": "CTA link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscribe Row"
+    }
+  ]
+}
+{% endschema %}

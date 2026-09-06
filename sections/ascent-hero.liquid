@@ -1,0 +1,375 @@
+<div
+  class="ascent-hero"
+  style="--hero-pad-top: {{ section.settings['padding-block-start'] }}px; --hero-pad-bottom: {{ section.settings['padding-block-end'] }}px;"
+>
+  {%- if section.settings.background_image != blank -%}
+    <img
+      class="ascent-hero__bg"
+      src="{{ section.settings.background_image | image_url: width: 1440 }}"
+      srcset="{{ section.settings.background_image | image_url: width: 750 }} 750w, {{ section.settings.background_image | image_url: width: 1100 }} 1100w, {{ section.settings.background_image | image_url: width: 1440 }} 1440w"
+      sizes="100vw"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      width="1440"
+      height="831"
+    >
+  {%- endif -%}
+
+  <div class="ascent-hero__overlay"></div>
+
+  <div class="ascent-hero__content">
+    <div class="ascent-hero__trust-row">
+      <div class="ascent-hero__avatars">
+        {%- if section.settings.avatar_1 != blank -%}
+          <img
+            class="ascent-hero__avatar"
+            src="{{ section.settings.avatar_1 | image_url: width: 62 }}"
+            alt=""
+            width="31"
+            height="31"
+            loading="eager"
+          >
+        {%- endif -%}
+        {%- if section.settings.avatar_2 != blank -%}
+          <img
+            class="ascent-hero__avatar"
+            src="{{ section.settings.avatar_2 | image_url: width: 62 }}"
+            alt=""
+            width="31"
+            height="31"
+            loading="eager"
+          >
+        {%- endif -%}
+        {%- if section.settings.avatar_3 != blank -%}
+          <img
+            class="ascent-hero__avatar"
+            src="{{ section.settings.avatar_3 | image_url: width: 62 }}"
+            alt=""
+            width="31"
+            height="31"
+            loading="eager"
+          >
+        {%- endif -%}
+      </div>
+      {%- if section.settings.eyebrow_text != blank -%}
+        <span class="ascent-hero__eyebrow">{{ section.settings.eyebrow_text }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.headline != blank -%}
+      <h1 class="ascent-hero__headline">{{ section.settings.headline }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.body_text != blank -%}
+      <p class="ascent-hero__body">{{ section.settings.body_text }}</p>
+    {%- endif -%}
+
+    <div class="ascent-hero__ctas">
+      {%- if section.settings.cta_primary_text != blank -%}
+        <a
+          class="ascent-hero__cta ascent-hero__cta--primary"
+          href="{{ section.settings.cta_primary_url | default: '#' }}"
+        >{{ section.settings.cta_primary_text }}</a>
+      {%- endif -%}
+      {%- if section.settings.cta_secondary_text != blank -%}
+        <a
+          class="ascent-hero__cta ascent-hero__cta--secondary"
+          href="{{ section.settings.cta_secondary_url | default: '#' }}"
+        >{{ section.settings.cta_secondary_text }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.ascent-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  background-color: #414141;
+  padding-block-start: var(--hero-pad-top, 0px);
+  padding-block-end: var(--hero-pad-bottom, 0px);
+}
+
+.ascent-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.ascent-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.34) 0%,
+    rgba(26, 26, 26, 0) 26%,
+    rgba(26, 26, 26, 0) 44%,
+    rgba(26, 26, 26, 0.72) 100%
+  );
+  z-index: 1;
+}
+
+.ascent-hero__content {
+  position: absolute;
+  inset-inline-start: 20px;
+  inset-inline-end: 20px;
+  bottom: 48px;
+  z-index: 2;
+  max-width: 794px;
+}
+
+.ascent-hero__trust-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin-block-end: 14px;
+  padding: 4px 16px 4px 8px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.ascent-hero__avatars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ascent-hero__avatar {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: 1px solid #f4f4f4;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ascent-hero__avatar + .ascent-hero__avatar {
+  margin-inline-start: -12px;
+}
+
+.ascent-hero__eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #f8f8f8;
+  white-space: nowrap;
+}
+
+.ascent-hero__headline {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 1.8px;
+  color: #fbec00;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.ascent-hero__body {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f8f8f8;
+  max-width: 520px;
+  margin: 0 0 24px;
+}
+
+.ascent-hero__ctas {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ascent-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ascent-hero__cta--primary {
+  background: #fbec00;
+  color: #1a1a1a;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 2.52px;
+  padding: 17px 30px;
+}
+
+.ascent-hero__cta--primary:hover {
+  background: #f0e000;
+}
+
+.ascent-hero__cta--secondary {
+  background: transparent;
+  color: #fbec00;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.96px;
+  padding: 18px 30px;
+}
+
+@media screen and (min-width: 750px) {
+  .ascent-hero {
+    min-height: 831px;
+  }
+
+  .ascent-hero__content {
+    inset-inline-start: 56px;
+    inset-inline-end: auto;
+    bottom: 120px;
+  }
+
+  .ascent-hero__headline {
+    font-size: 120px;
+    line-height: 120px;
+    margin-block-end: 22px;
+  }
+
+  .ascent-hero__body {
+    font-size: 21px;
+    line-height: 28px;
+    margin-block-end: 30px;
+  }
+
+  .ascent-hero__eyebrow {
+    font-size: 16px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "header",
+      "content": "Trust badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Trusted by World class athletes"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "MADE FOR HARD WORK."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "We're the only major brand that makes its own protein — native whey from farm-fresh milk, with nothing artificial. Ever."
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA text",
+      "default": "SHOP NATIVE WHEY"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "SEE THE SCIENCE →"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

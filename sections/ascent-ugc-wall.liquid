@@ -1,0 +1,383 @@
+<div
+  class="ascent-ugc"
+  style="--ugc-pad-top: {{ section.settings['padding-block-start'] }}px; --ugc-pad-bottom: {{ section.settings['padding-block-end'] }}px;"
+>
+  <div class="ascent-ugc__inner">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="ascent-ugc__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="ascent-ugc__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="ascent-ugc__subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="ascent-ugc__grid">
+        {%- for block in section.blocks -%}
+          <div
+            class="ascent-ugc__card ascent-ugc__card--{{ block.settings.card_theme }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.card_image != blank -%}
+              <div class="ascent-ugc__card-media">
+                <img
+                  class="ascent-ugc__card-img"
+                  src="{{ block.settings.card_image | image_url: width: 620 }}"
+                  alt="{{ block.settings.author_name | escape }}"
+                  width="620"
+                  height="480"
+                  loading="lazy"
+                >
+              </div>
+            {%- endif -%}
+            <div class="ascent-ugc__card-body">
+              {%- if block.settings.quote != blank -%}
+                <p class="ascent-ugc__quote">"{{ block.settings.quote }}"</p>
+              {%- endif -%}
+              <div class="ascent-ugc__author-row">
+                {%- if block.settings.author_name != blank -%}
+                  <span class="ascent-ugc__author-name">{{ block.settings.author_name }}</span>
+                {%- endif -%}
+                {%- if block.settings.author_handle != blank -%}
+                  <span class="ascent-ugc__author-handle">{{ block.settings.author_handle }}</span>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.product_name != blank -%}
+                <div class="ascent-ugc__product-row">
+                  {%- if block.settings.product_thumbnail != blank -%}
+                    <img
+                      class="ascent-ugc__product-thumb"
+                      src="{{ block.settings.product_thumbnail | image_url: width: 80 }}"
+                      alt="{{ block.settings.product_name | escape }}"
+                      width="40"
+                      height="40"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                  {%- if block.settings.product_url != blank -%}
+                    <a class="ascent-ugc__product-link" href="{{ block.settings.product_url }}">{{ block.settings.product_name }}</a>
+                  {%- else -%}
+                    <span class="ascent-ugc__product-link">{{ block.settings.product_name }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.ascent-ugc {
+  background: #111111;
+  padding-block-start: var(--ugc-pad-top, 80px);
+  padding-block-end: var(--ugc-pad-bottom, 80px);
+  padding-inline: 20px;
+}
+
+.ascent-ugc__inner {
+  max-width: 1328px;
+  margin-inline: auto;
+}
+
+.ascent-ugc__header {
+  margin-block-end: 48px;
+}
+
+.ascent-ugc__heading {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  color: #f8f8f8;
+  margin: 0 0 12px;
+}
+
+.ascent-ugc__subheading {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #a9a9a9;
+  margin: 0;
+}
+
+.ascent-ugc__grid {
+  column-count: 1;
+  column-gap: 16px;
+}
+
+.ascent-ugc__card {
+  break-inside: avoid;
+  margin-block-end: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ascent-ugc__card--dark {
+  background: #1a1a1a;
+}
+
+.ascent-ugc__card--light {
+  background: #ffffff;
+}
+
+.ascent-ugc__card-media {
+  overflow: hidden;
+}
+
+.ascent-ugc__card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.ascent-ugc__card-body {
+  padding: 20px;
+}
+
+.ascent-ugc__quote {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 16px;
+}
+
+.ascent-ugc__card--dark .ascent-ugc__quote {
+  color: #f8f8f8;
+}
+
+.ascent-ugc__card--light .ascent-ugc__quote {
+  color: #1a1a1a;
+}
+
+.ascent-ugc__author-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-block-end: 12px;
+}
+
+.ascent-ugc__author-name {
+  font-family: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ascent-ugc__card--dark .ascent-ugc__author-name {
+  color: #fbec00;
+}
+
+.ascent-ugc__card--light .ascent-ugc__author-name {
+  color: #1a1a1a;
+}
+
+.ascent-ugc__author-handle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ascent-ugc__card--dark .ascent-ugc__author-handle {
+  color: #919191;
+}
+
+.ascent-ugc__card--light .ascent-ugc__author-handle {
+  color: #717171;
+}
+
+.ascent-ugc__product-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-block-start: 12px;
+  border-block-start: 1px solid;
+}
+
+.ascent-ugc__card--dark .ascent-ugc__product-row {
+  border-color: #292929;
+}
+
+.ascent-ugc__card--light .ascent-ugc__product-row {
+  border-color: #e5e5e5;
+}
+
+.ascent-ugc__product-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.ascent-ugc__product-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.ascent-ugc__card--dark .ascent-ugc__product-link {
+  color: #f8f8f8;
+}
+
+.ascent-ugc__card--light .ascent-ugc__product-link {
+  color: #1a1a1a;
+}
+
+.ascent-ugc__product-link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 576px) {
+  .ascent-ugc__grid {
+    column-count: 2;
+    column-gap: 20px;
+  }
+
+  .ascent-ugc__card {
+    margin-block-end: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ascent-ugc {
+    padding-inline: 56px;
+  }
+
+  .ascent-ugc__grid {
+    column-count: 3;
+    column-gap: 24px;
+  }
+
+  .ascent-ugc__card {
+    margin-block-end: 24px;
+  }
+
+  .ascent-ugc__heading {
+    font-size: 42px;
+  }
+
+  .ascent-ugc__subheading {
+    font-size: 18px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "UGC Wall",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real results. Real people."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See what our community is saying."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ugc-card",
+      "name": "UGC card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card image"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "Author Name"
+        },
+        {
+          "type": "text",
+          "id": "author_handle",
+          "label": "Author handle",
+          "default": "@handle"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "This product changed my training."
+        },
+        {
+          "type": "select",
+          "id": "card_theme",
+          "label": "Card theme",
+          "default": "dark",
+          "options": [
+            { "value": "dark", "label": "Dark" },
+            { "value": "light", "label": "Light" }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "product_thumbnail",
+          "label": "Product thumbnail"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product name"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Product link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Wall"
+    }
+  ]
+}
+{% endschema %}
